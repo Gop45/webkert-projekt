@@ -1,0 +1,118 @@
+.booking {
+  padding: 2rem;
+  max-width: 800px;
+  margin: auto;
+
+  h2 {
+    text-align: center;
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+    animation: fadeIn 1s ease;
+  }
+}
+
+.booking-form-card {
+  padding: 0;
+  background-color: #fafafa;
+  box-shadow: none;
+  border-radius: 0;
+  margin-top: 1rem;
+}
+
+
+
+.form-container {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  padding: 2rem;
+  background-color: #fff;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  margin-top: 2rem;
+}
+
+mat-form-field {
+  width: 100%;
+}
+
+button {
+  grid-column: span 2;
+  justify-self: start;
+  padding: 0.75rem 1.5rem;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.kiemelt {
+  color: #c62828;
+  font-weight: bold;
+}
+
+.foglalas-info {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin: 1rem 0;
+  padding: 0.75rem 1rem;
+  border-radius: 8px;
+  background-color: #f3f3f3;
+  font-size: 1.1rem;
+  color: #444;
+  border: 1px solid #ccc;
+}
+
+.foglalas-info.kiemelt {
+  background-color: #ffecec;
+  border-color: #c62828;
+  color: #c62828;
+  font-weight: bold;
+}
+
+.foglalas-szam {
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+.tetovalo-cim {
+  margin-top: 2rem;
+  font-size: 1.4rem;
+  font-weight: bold;
+  color: #333;
+}
+
+.tetovalo-lista {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.tetovalo-kartya {
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 1rem;
+  flex: 1 1 250px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+.tetovalo-kartya h4 {
+  margin-bottom: 0.5rem;
+  font-size: 1.1rem;
+  color: #222;
+}
+
+.tetovalo-kartya p {
+  margin: 0.2rem 0;
+  font-size: 0.95rem;
+}

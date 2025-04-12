@@ -1,0 +1,60 @@
+<div class="booking">
+  <h2>Időpontfoglalás</h2>
+
+  <p *ngIf="foglalasok.length === 0">Jelenleg nincsenek foglalások.</p>
+
+  <div class="foglalas-info" [ngClass]="{ 'kiemelt': foglalasok.length > 0 }">
+    <span class="foglalas-szoveg">Aktív foglalások száma:</span>
+    <span class="foglalas-szam">{{ foglalasok.length }}</span>
+  </div>
+  
+
+  <mat-card class="booking-form-card">
+    <form class="form-container">
+      <mat-form-field appearance="fill">
+        <mat-label>Név</mat-label>
+        <input matInput required>
+      </mat-form-field>
+  
+      <mat-form-field appearance="fill">
+        <mat-label>Email</mat-label>
+        <input matInput type="email" required>
+      </mat-form-field>
+  
+      <mat-form-field appearance="fill">
+        <mat-label>Dátum</mat-label>
+        <input matInput [matDatepicker]="picker">
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+      </mat-form-field>
+  
+      <mat-form-field appearance="fill">
+        <mat-label>Stílus</mat-label>
+        <mat-select>
+          <mat-option value="minimal">Minimal</mat-option>
+          <mat-option value="realistic">Realista</mat-option>
+          <mat-option value="japan">Japán</mat-option>
+        </mat-select>
+      </mat-form-field>
+  
+      <button mat-raised-button color="accent">Foglalás küldése</button>
+    </form>
+  </mat-card>
+    
+  
+
+  <app-foglalas-lista
+    [foglalasok]="foglalasok"
+    (torles)="foglalasTorles($event)">
+  </app-foglalas-lista>
+
+
+  <h3 class="tetovalo-cim">Elérhető tetoválók:</h3>
+  <div class="tetovalo-lista">
+    <div class="tetovalo-kartya" *ngFor="let tetovalo of tetovalok">
+      <h4>{{ tetovalo.nev }}</h4>
+      <p><strong>Stílus:</strong> {{ tetovalo.stilus | stilusKiemel }}</p>
+      <p><strong>Tapasztalat:</strong> {{ tetovalo.tapasztalatEv }} év</p>
+    </div>
+  </div>
+</div>

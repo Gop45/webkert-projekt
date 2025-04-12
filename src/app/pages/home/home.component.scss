@@ -1,0 +1,55 @@
+.home {
+  text-align: center;
+  padding: 2rem;
+  h1 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    animation: fadeIn 1s ease-out;
+  }
+  .intro {
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
+  }
+  .buttons {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+    .btn {
+      padding: 0.75rem 1.5rem;
+      background-color: #333;
+      color: #fff;
+      text-decoration: none;
+      border-radius: 0.5rem;
+      transition: background-color 0.3s ease;
+      &:hover {
+        background-color: #555;
+      }
+    }
+    .secondary {
+      background-color: #666;
+      &:hover {
+        background-color: #888;
+      }
+    }
+  }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.btn {
+  display: inline-block;
+  cursor: pointer;
+  text-align: center;
+  user-select: none;
+  z-index: 1;
+  position: relative;
+}
+
+.buttons {
+  z-index: 1;
+  position: relative;
+}
