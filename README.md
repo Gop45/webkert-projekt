@@ -1,4 +1,4 @@
-# Dark Ink
+# Dark Ink (Látkóczki Dániel)
 
 Tetoválószalon időpontfoglaló webalkalmazás.
 
