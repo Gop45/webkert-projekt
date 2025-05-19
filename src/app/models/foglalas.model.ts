@@ -1,5 +1,5 @@
 export interface Foglalas {
-    id: number;
+    id: string;
     datum: string;
     ido: string;
     vendegNev: string;

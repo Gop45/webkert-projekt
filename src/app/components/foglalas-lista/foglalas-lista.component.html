@@ -1,11 +1,10 @@
 <h3 class="foglalas-cim">Foglalások</h3>
 <div class="foglalas-lista">
   <div class="foglalas-kartya" *ngFor="let f of foglalasok">
-    <div class="foglalas-fejlec">
-      <h4>{{ f.vendegNev }}</h4>
-      <span class="foglalas-datum">{{ f.datum }} – {{ f.ido }}</span>
-    </div>
-    <p><strong>Tetováló ID:</strong> {{ f.tetovaloId }}</p>
-    <button (click)="torlesInditas(f.id)">Törlés</button>
+    <h4>{{ f.vendegNev }}</h4>
+    <p><strong>Dátum:</strong> {{ f.datum | datumKiemeles }}</p>
+    <p><strong>Idő:</strong> {{ f.ido }}</p>
+    <p><strong>Tetováló:</strong> {{ getTetovaloNev(f.tetovaloId) }}</p>
+    <button mat-button color="warn" (click)="torlesInditas(f.id)">Törlés</button>
   </div>
 </div>

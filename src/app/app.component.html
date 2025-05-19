@@ -1,11 +1,21 @@
-<mat-toolbar class="custom-navbar" color="primary">
-  <span class="logo">Dark Ink</span>
+<mat-toolbar class="custom-toolbar">
+  <span class="brand">Dark Ink</span>
+
   <span class="spacer"></span>
-  <nav class="nav-links">
-    <a mat-button routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Főoldal</a>
-    <a mat-button routerLink="/foglalas" routerLinkActive="active">Foglalás</a>
-    <a mat-button routerLink="/kapcsolat" routerLinkActive="active">Kapcsolat</a>
-  </nav>
+
+  <a mat-button routerLink="/">Főoldal</a>
+  <a mat-button routerLink="/foglalas">Időpontfoglalás</a>
+  <a mat-button routerLink="/kapcsolat">Kapcsolat</a>
+
+  <ng-container *ngIf="user$ | async as user; else vendeg">
+    <span class="email-label">{{ user.email }}</span>
+    <button mat-button (click)="logout()">Kijelentkezés</button>
+  </ng-container>
+
+  <ng-template #vendeg>
+    <a mat-button routerLink="/login">Bejelentkezés</a>
+    <a mat-button routerLink="/register">Regisztráció</a>
+  </ng-template>
 </mat-toolbar>
 
 <router-outlet></router-outlet>

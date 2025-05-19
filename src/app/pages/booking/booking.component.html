@@ -1,53 +1,68 @@
 <div class="booking">
   <h2>Időpontfoglalás</h2>
 
-  <p *ngIf="foglalasok.length === 0">Jelenleg nincsenek foglalások.</p>
+  <ng-container *ngIf="foglalasok$ | async as foglalasok">
+    <p *ngIf="foglalasok.length === 0">Jelenleg nincsenek foglalások.</p> 
+    <div class="foglalas-info" [ngClass]="{ 'kiemelt': foglalasok.length > 0 }">
+      <span class="foglalas-szoveg">Aktív foglalások száma:</span>
+      <span class="foglalas-szam">{{ foglalasok.length }}</span>
+    </div>
 
-  <div class="foglalas-info" [ngClass]="{ 'kiemelt': foglalasok.length > 0 }">
-    <span class="foglalas-szoveg">Aktív foglalások száma:</span>
-    <span class="foglalas-szam">{{ foglalasok.length }}</span>
-  </div>
-  
+    <app-foglalas-lista
+      [foglalasok]="foglalasok"
+      [tetovalok]="tetovalok"
+      (torles)="foglalasTorles($event)">
+    </app-foglalas-lista>
+  </ng-container>
 
   <mat-card class="booking-form-card">
-    <form class="form-container">
+    <form class="form-container" [formGroup]="form" (ngSubmit)="onSubmit()">
       <mat-form-field appearance="fill">
         <mat-label>Név</mat-label>
-        <input matInput required>
+        <input matInput formControlName="nev" required>
       </mat-form-field>
-  
+
       <mat-form-field appearance="fill">
         <mat-label>Email</mat-label>
-        <input matInput type="email" required>
+        <input matInput type="email" formControlName="email" required>
       </mat-form-field>
-  
+
       <mat-form-field appearance="fill">
         <mat-label>Dátum</mat-label>
-        <input matInput [matDatepicker]="picker">
+        <input matInput [matDatepicker]="picker" formControlName="datum">
         <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
         <mat-datepicker #picker></mat-datepicker>
       </mat-form-field>
-  
+
       <mat-form-field appearance="fill">
-        <mat-label>Stílus</mat-label>
-        <mat-select>
-          <mat-option value="minimal">Minimal</mat-option>
-          <mat-option value="realistic">Realista</mat-option>
-          <mat-option value="japan">Japán</mat-option>
+        <mat-label>Tetováló kiválasztása</mat-label>
+        <mat-select formControlName="tetovaloId">
+          <mat-option *ngFor="let t of tetovalok" [value]="t.id">
+            {{ t.nev }} – {{ t.stilus }}
+          </mat-option>
         </mat-select>
       </mat-form-field>
-  
-      <button mat-raised-button color="accent">Foglalás küldése</button>
+
+
+      <mat-form-field appearance="fill">
+        <mat-label>Időpont</mat-label>
+        <mat-select formControlName="ido">
+          <mat-option value="09:00">09:00</mat-option>
+          <mat-option value="10:00">10:00</mat-option>
+          <mat-option value="11:00">11:00</mat-option>
+          <mat-option value="13:00">13:00</mat-option>
+          <mat-option value="14:00">14:00</mat-option>
+          <mat-option value="15:00">15:00</mat-option>
+          <mat-option value="16:00">16:00</mat-option>
+        </mat-select>
+      </mat-form-field>
+
+
+      <button mat-raised-button color="accent" type="submit" [disabled]="form.invalid">
+        Foglalás küldése
+      </button>
     </form>
   </mat-card>
-    
-  
-
-  <app-foglalas-lista
-    [foglalasok]="foglalasok"
-    (torles)="foglalasTorles($event)">
-  </app-foglalas-lista>
-
 
   <h3 class="tetovalo-cim">Elérhető tetoválók:</h3>
   <div class="tetovalo-lista">

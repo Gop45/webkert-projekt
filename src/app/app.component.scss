@@ -72,3 +72,35 @@ body {
     margin-bottom: 1rem;
   }
 }
+
+.custom-toolbar {
+  background-color: #000000 !important;
+  color: white;
+}
+
+a,
+  button,
+  .email-label {
+    color: white !important;
+  }
+
+  a:hover,
+  button:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+  }
+
+.brand {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.spacer {
+  flex: 1 1 auto;
+}
+
+.email-label {
+  font-style: italic;
+  font-size: 0.9rem;
+  margin-right: 1rem;
+}
+
